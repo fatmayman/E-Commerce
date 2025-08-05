@@ -12,4 +12,4 @@ The application uses the following APIs:
 
 ## 📄 License
 
-This project is created for educational purposes as part of an ITI graduation project.
+This project is created for educational purposes as part of an ITI Final project.
