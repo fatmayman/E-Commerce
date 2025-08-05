@@ -1,0 +1,167 @@
+/* Header Styles */
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  padding: 8px 20px 8px 0;
+  border-bottom: none; 
+  background-color:#FFF8DB ;
+}
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .header.scrolled {
+  background-color: rgba(18, 18, 18, 0.8);
+}
+
+.header .logo-img {
+  position: absolute;
+  height: 65px;
+  transition: transform 0.3s ease-in-out;
+  top: 0;
+  left: 43%;
+}
+
+.header.scrolled .logo-img {
+  transform: scale(0.9);
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+body.dark .nav-link {
+  color: #eee;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+body.dark .nav-link:hover {
+  color: #66b3ff;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ff0000;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+body.dark .theme-toggle-btn {
+  color: #eee;
+}
+
+.theme-toggle-btn:hover {
+  color: #d400ff;
+}
+
+body.dark .theme-toggle-btn:hover {
+  color: #66b3ff;
+}
+
+.search-icon, .user-icon, .cart-icon {
+  color: #333;
+}
+
+body.dark .search-icon, body.dark .user-icon, body.dark .cart-icon {
+  color: #eee;
+}
+
+.custom-search-form{
+  width: 300px;
+  max-width: 100%;
+  margin-top: 0;
+  padding-top: 0;
+  margin-left: auto;
+    display: flex;
+
+}
+
+.cart-count {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2em 0.6em;
+  font-size: 0.75em;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+body.dark .cart-count {
+  background-color: #66b3ff;
+}
+
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ⬇️ الجزء اللى فيه السيرش + الايكونز */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex: 1;
+}
+
+/* ⬇️ الفورم بتاع السيرش */
+.custom-search-form {
+  width: 250px;
+  /* تقدر تغيريها */
+  margin-right: auto;
+  /* يزقه على يسار الأيقونات */
+  display: flex;
+  align-items: center;
+}
+
+/* ⬇️ عناصر السيرش نفسها */
+.custom-search-form .form-control {
+  font-size: 0.9rem;
+  height: 35px;
+}
+
+.custom-search-form .btn {
+  height: 35px;
+}
+
+/* ⬇️ الأيقونات */
+.cart-icon,
+.user-icon,
+.theme-toggle-btn svg,
+.dropdown-toggle svg {
+  color: var(--bs-body-color);
+}
+
+/* ⬇️ عدد العناصر في الكارت */
+.cart-count {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* ⬇️ القائمة الأساسية */
+.navbar-nav {
+  display: flex;
+  gap: 10px;
+}

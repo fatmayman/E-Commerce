@@ -1,0 +1,33 @@
+/* Layout Styles */
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  flex: 1;
+  padding-top: 88px; /* Account for fixed header height */
+}
+
+/* Ensure proper spacing for content */
+.layout-content {
+  min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+}
+
+/* RTL Support */
+[dir="rtl"] .layout-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .layout-main {
+  text-align: right;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .layout-main {
+    padding-top: 88px; /* Smaller padding on mobile */
+  }
+}
+
