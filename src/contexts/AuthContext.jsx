@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is logged in on app start
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
       try {
@@ -30,14 +29,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      // Simulate API call - replace with actual API call
-      // In a real application, you would send email and password to your backend
-      // and receive a token or user data in response.
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 500)); 
 
-      if (email === 'test@example.com' && password === 'password') {
+      if (email === 'test@example.com' && password === '123456') {
         const mockUser = {
-          id: 1,
+          id: 1,  
           name: 'Test User',
           email: email,
           avatar: null
@@ -55,12 +51,9 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      // Simulate API call - replace with actual API call
-      // In a real application, you would send userData to your backend
-      // and receive a confirmation or user data in response.
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate network delay
 
-      // For simplicity, directly log in the user after successful registration
+      await new Promise(resolve => setTimeout(resolve, 500)); 
+
       const mockUser = {
         id: Date.now(),
         name: userData.name,

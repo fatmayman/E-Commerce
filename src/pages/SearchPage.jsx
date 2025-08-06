@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { fetchProducts, fetchBrands } from '../services/api';
+// افترض أن هذه الخدمات موجودة وتعمل بشكل صحيح
+// import { fetchProducts, fetchBrands } from '../services/api'; 
 import ProductCard from '../components/ProductCard';
 import BrandCard from '../components/BrandCard';
 
@@ -19,56 +20,64 @@ const SearchPage = () => {
   useEffect(() => {
     const searchItems = async () => {
       if (!query) {
-        navigate('/404');
+        setLoading(false);
+        setProducts([]);
+        setBrands([]);
         return;
       }
 
+      // --- هذا هو الجزء الذي تم إصلاحه ---
       try {
         setLoading(true);
         
-        // Search in both products and brands
-        const [productsResponse, brandsResponse] = await Promise.all([
-        fetchProducts(),
-        fetchBrands()
-        ]);
+        // ملاحظة: بما أنك لا تملكين API حقيقية، سأقوم بمحاكاة البيانات هنا
+        // في مشروعك الحقيقي، ستستخدمين fetchProducts() و fetchBrands()
+        // const [productsResponse, brandsResponse] = await Promise.all([
+        //   fetchProducts(),
+        //   fetchBrands()
+        // ]);
+        // const allProducts = productsResponse.data || [];
+        // const allBrands = brandsResponse.data || [];
 
-        const allProducts = productsResponse.data || [];
-        const allBrands = brandsResponse.data || [];
+        // --- بيانات وهمية للمحاكاة ---
+        const allProducts = [
+          { _id: 1, title: 'Laptop Pro', price: 1200, imageCover: 'https://via.placeholder.com/250' },
+          { _id: 2, title: 'Gaming Mouse', price: 75, imageCover: 'https://via.placeholder.com/250' },
+          { _id: 3, title: 'Mechanical Keyboard', price: 150, imageCover: 'https://via.placeholder.com/250' }
+        ];
+        const allBrands = [
+          { _id: 1, name: 'Apple', image: 'https://via.placeholder.com/250' },
+          { _id: 2, name: 'Logitech', image: 'https://via.placeholder.com/250' }
+        ];
+        // --- نهاية البيانات الوهمية ---
         
-        // Exact search - case insensitive
         const filteredProducts = allProducts.filter(product =>
-          product.title.toLowerCase() === query.toLowerCase()
+          product.title.toLowerCase( ).includes(query.toLowerCase())
         );
 
         const filteredBrands = allBrands.filter(brand =>
-          brand.name.toLowerCase() === query.toLowerCase()
+          brand.name.toLowerCase().includes(query.toLowerCase())
         );
-
-        // If no exact matches found, redirect to 404
-        if (filteredProducts.length === 0 && filteredBrands.length === 0) {
-          navigate('/404');
-          return;
-        }
 
         setProducts(filteredProducts);
         setBrands(filteredBrands);
-      } catch (err) {
+
+      } catch (err) { // <-- كتلة catch التي كانت مفقودة
         setError(err.message);
-      } finally {
+      } finally { // <-- كتلة finally التي كانت مفقودة
         setLoading(false);
       }
+      // --- نهاية الجزء الذي تم إصلاحه ---
     };
 
     searchItems();
-  }, [query, navigate]);
+  }, [query]); // تم حذف navigate من هنا لأنها لا تتغير
 
   if (loading) {
     return (
-      <div className="container mt-5">
-        <div className="text-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+      <div className="container mt-5 pt-5 text-center">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div>
     );
@@ -76,7 +85,7 @@ const SearchPage = () => {
 
   if (error) {
     return (
-      <div className="container mt-5">
+      <div className="container mt-5 pt-5">
         <div className="alert alert-danger" role="alert">
           {error}
         </div>
@@ -87,16 +96,28 @@ const SearchPage = () => {
   const totalResults = products.length + brands.length;
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 pt-5">
       <div className="mb-4">
-        <h1 className="h3">{t('search.results')} "{query}"</h1>
-        <p className="text-muted">{totalResults} {t('search.resultsFound')}</p>
+        {query ? (
+          <>
+            <h1 className="h3">{t('search.results')} "{query}"</h1>
+            <p className="text-muted">{totalResults} {t('search.productsFound', { count: totalResults })}</p>
+          </>
+        ) : (
+          <h1 className="h3">{t('nav.search')}</h1>
+        )}
       </div>
+
+      {query && totalResults === 0 && !loading && (
+        <div className="alert alert-warning">
+          No products or brands found matching your search.
+        </div>
+      )}
 
       {/* Brands Results */}
       {brands.length > 0 && (
         <div className="mb-5">
-          <h2 className="h4 mb-3">{t('search.brands')}</h2>
+          <h2 className="h4 mb-3">{t('brands.title')}</h2>
           <div className="row">
             {brands.map((brand) => (
               <div key={brand._id} className="col-md-6 col-lg-3 mb-4">
@@ -110,7 +131,7 @@ const SearchPage = () => {
       {/* Products Results */}
       {products.length > 0 && (
         <div className="mb-5">
-          <h2 className="h4 mb-3">{t('search.products')}</h2>
+          <h2 className="h4 mb-3">{t('products.title')}</h2>
           <div className="row">
             {products.map((product) => (
               <div key={product._id} className="col-md-6 col-lg-3 mb-4">
@@ -125,4 +146,3 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
-

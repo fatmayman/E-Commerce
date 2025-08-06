@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import logo from '../assets/default-monochrome.png';
-import './Footer.css'; // Import the SVG logo
+import { useTheme } from '../contexts/ThemeContext'; 
+import logoLight from '../assets/default-monochrome.svg'; 
+import logoDark from '../assets/default-monochrome-white.svg'; 
+import './Footer.css';
 
 const Footer = () => {
   const { t } = useTranslation();
+  const { theme } = useTheme(); 
   const [ratings, setRatings] = useState([]);
   const [newRating, setNewRating] = useState({ name: '', email: '', message: '' });
+
+  const logoSrc = theme === 'dark' ? logoDark : logoLight;
 
   const handleRatingSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +23,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer bg-light">
+    <footer className="footer">
       <div className="container">
         {ratings.length > 0 && (
           <div className="rating-display mb-4">
@@ -72,7 +77,7 @@ const Footer = () => {
             </form>
           </div>
           <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
-            <img src={logo} alt="Illurea Logo" style={{ height: '50px', marginBottom: '1rem' }} />
+            <img src={logoSrc} alt="Illurea Logo" className="logo-footer" />
             <p>&copy; {new Date().getFullYear()} Illurea. {t('footer.rightsReserved')}</p>
             <div>
               <a href="https://www.linkedin.com/in/fatmayman/" target="_blank" rel="noopener noreferrer" className="me-3">
@@ -89,8 +94,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
+   );
 };
 
 export default Footer;
-

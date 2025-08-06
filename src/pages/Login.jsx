@@ -23,7 +23,6 @@ const Login = () => {
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -74,7 +73,7 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container" style={{ backgroundImage: 'linear-gradient(155deg, #9fd4a3ff , #6b9071 , #497146ff)' }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-4">

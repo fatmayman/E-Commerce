@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Home, ArrowLeft, Search } from 'lucide-react';
 import './NotFound.css';
+import errorImg from '../assets/error.png';
 
 const NotFound = () => {
   const { t } = useTranslation();
@@ -10,15 +11,14 @@ const NotFound = () => {
   return (
     <div className="not-found-container">
       <div className="not-found-content">
-        {/* Search Icon */}
         <div className="not-found-icon">
-          <Search size={80} />
+<img src={errorImg} alt="404 ERROR" />
         </div>
         
         {/* 404 Number */}
-        <div className="not-found-number">
+        {/* <div className="not-found-number">
           404
-        </div>
+        </div> */}
         
         {/* Error Message */}
         <h1 className="not-found-title">
@@ -26,7 +26,10 @@ const NotFound = () => {
         </h1>
         
         <p className="not-found-description">
-          {t('errors.404Description')}
+        The page you're looking for can’t be found.
+        It might have been removed, had its name changed, or is temporarily unavailable.
+        Please check the URL for mistakes and try again.
+        Or return to the homepage to continue browsing.
         </p>
 
         {/* Actions */}

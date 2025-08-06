@@ -13,7 +13,6 @@ const HeroSection = () => {
     const loadCategories = async () => {
       try {
         const data = await fetchCategories();
-        // Take first 3 categories for carousel
         setCategories(data.slice(0, 8));
       } catch (error) {
         console.error('Error loading categories:', error);
@@ -25,15 +24,25 @@ const HeroSection = () => {
     loadCategories();
   }, []);
 
-  useEffect(() => {
-  if (!loading) {
-    const carouselElement = document.querySelector('#heroCarousel');
-    if (carouselElement) {
-      const carouselInstance = window.bootstrap.Carousel.getOrCreateInstance(carouselElement);
-      carouselInstance.cycle();
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById('products-section');
+    if (productsSection) {
+      productsSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
-  }
-}, [loading]);
+  };
+
+  useEffect(() => {
+    if (!loading) {
+      const carouselElement = document.querySelector('#heroCarousel');
+      if (carouselElement) {
+        const carouselInstance = window.bootstrap.Carousel.getOrCreateInstance(carouselElement);
+        carouselInstance.cycle();
+      }
+    }
+  }, [loading]);
 
 
   if (loading) {
@@ -74,18 +83,20 @@ const HeroSection = () => {
               <div 
                 className="hero-slide d-flex align-items-center justify-content-center"
                 style={{
-                  height: '400px',
+                  height: '544px',
                   backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${category.image})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
+                  backgroundPosition: 'center',
+                }}>
                 <div className="container text-center text-white">
                   <h1 className="display-4 fw-bold mb-3">{t('hero.welcome')}</h1>
                   <h2 className="h3 mb-4">{category.name}</h2>
                   <p className="lead mb-4">{t('hero.subtitle')}</p>
-                  <button className="btn btn-light btn-lg">
-                    {t('hero.shopNow')}
+                  <button 
+                    className="btn btn-light btn-lg"
+                    onClick={scrollToProducts}
+                  >
+                    {t("hero.shopNow")}
                   </button>
                 </div>
               </div>
@@ -93,7 +104,7 @@ const HeroSection = () => {
           ))}
         </div>
         
-        <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <button className="carousel-control-prev" type="button" data-bs-target="#heroCarouselPr" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
         </button>

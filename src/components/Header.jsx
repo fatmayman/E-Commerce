@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useTheme } from '../contexts/ThemeContext';
-import { Search, User, ShoppingCart, Moon, Sun, Globe } from 'lucide-react';
-import logo from '../assets/default-monochrome.png';
+import { User, ShoppingCart, Moon, Sun, Globe, Search, X } from 'lucide-react'; 
+import logoLight from '../assets/default-monochrome.svg'; 
+import logoDark from '../assets/default-monochrome-white.svg'; 
 import './Header.css';
 
 const Header = () => {
@@ -14,26 +15,21 @@ const Header = () => {
   const { cartItems } = useCart();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  
-  const [searchQuery, setSearchQuery] = useState('');
+
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const logoSrc = theme === 'dark' ? logoDark : logoLight;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery('');
-    }
+  const handleSearchSubmit = (e) => {
+    e.preventDefault(); 
   };
 
   const handleLanguageToggle = () => {
@@ -43,7 +39,6 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
-    setShowUserMenu(false);
     navigate('/');
   };
 
@@ -51,128 +46,78 @@ const Header = () => {
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <nav className="navbar navbar-expand-lg">
-          {/* Mobile Toggle */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
-            <span className="navbar-toggler-icon"></span>
+      <div className="header-top-bar">
+        <div className="header-section left">
+          <button onClick={toggleTheme} className="theme-toggle-btn" title={theme === 'dark' ? t('common.lightMode') : t('common.darkMode')}>
+            {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
           </button>
+          <button onClick={handleLanguageToggle} className="btn btn-link p-0" title={t('common.language')}>
+            <Globe size={22} />
+          </button>
+        </div>
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            {/* Navigation Links */}
-            <ul className="navbar-nav me-auto">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">{t('nav.home')}</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/brands" className="nav-link">{t('nav.brands')}</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/categories" className="nav-link">{t('nav.categories')}</Link>
-              </li>
-            </ul>
-
-              <div className="container">
-          {/* Logo */}
-          <Link to="/" className="navbar-brand">
-            <img src={logo} alt="Illurea" className="logo-img" />
+        <div className="header-section center-logo">
+          <Link to="/" className="navbar-brand logo-container">
+            <img src={logoSrc} alt="Illurea" className="logo-img" />
           </Link>
+        </div>
 
-            {/* Search Form */}
-            <form className="d-flex me-3 custom-search-form " onSubmit={handleSearch}>
-              <div className="input-group">
+        <div className="header-section right">
+          <div className="user-actions-container">
+            <div className="header-search-container">
+              <form onSubmit={handleSearchSubmit} className={`search-form ${isSearchOpen ? 'open' : ''}`}>
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder={t('nav.search')}
+                  className="search-input"
+                  placeholder={t('nav.search') + '...'}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button type="submit" className="btn btn-outline-secondary">
-                  <Search size={16} className="search-icon" />
-                </button>
-              </div>
-            </form>
-
-            {/* Right Side Icons */}
-            <div className="d-flex align-items-center gap-3">
-              {/* Language Toggle */}
-              <button
-                onClick={handleLanguageToggle}
-                className="btn btn-link p-0"
-                title={t('common.language')}
-              >
-                <Globe size={20} />
+              </form>
+              <button onClick={() => setIsSearchOpen(!isSearchOpen)} className="btn btn-link p-0">
+                {isSearchOpen ? <X size={22} /> : <Search size={22} />}
               </button>
+            </div>
 
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className="theme-toggle-btn"
-                title={theme === 'dark' ? t('common.lightMode') : t('common.darkMode')}
-              >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            <div className="dropdown">
+              <button className="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false">
+                <User size={22} className="user-icon" />
               </button>
-
-              {/* Cart */}
-              <Link to="/cart" className="btn btn-link p-0 position-relative">
-                <ShoppingCart size={20} className="cart-icon" />
-                {cartItemCount > 0 && (
-                  <span className="cart-count">{cartItemCount}</span>
+              <ul className="dropdown-menu dropdown-menu-end">
+                {user ? (
+                  <>
+                    <li><Link to="/profile" className="dropdown-item">{t('nav.profile')}</Link></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><button onClick={handleLogout} className="dropdown-item">{t('nav.logout')}</button></li>
+                  </>
+                ) : (
+                  <>
+                    <li><Link to="/login" className="dropdown-item">{t('nav.login')}</Link></li>
+                    <li><Link to="/register" className="dropdown-item">{t('nav.register')}</Link></li>
+                  </>
                 )}
-              </Link>
-
-              {/* User Menu */}
-              <div className="dropdown">
-                <button
-                  className="btn btn-link p-0"
-                  data-bs-toggle="dropdown"
-                  onClick={() => setShowUserMenu(!showUserMenu)}
-                >
-                  <User size={20} className="user-icon" />
-                </button>
-                <ul className="dropdown-menu dropdown-menu-end">
-                  {user ? (
-                    <>
-                      <li>
-                        <Link to="/profile" className="dropdown-item">
-                          {t('nav.profile')}
-                        </Link>
-                      </li>
-                      <li><hr className="dropdown-divider" /></li>
-                      <li>
-                        <button onClick={handleLogout} className="dropdown-item">
-                          {t('nav.logout')}
-                        </button>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <Link to="/login" className="dropdown-item">
-                          {t('nav.login')}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/register" className="dropdown-item">
-                          {t('nav.register')}
-                        </Link>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div>
+              </ul>
             </div>
           </div>
+
+          <Link to="/cart" className="btn btn-link p-0 cart-link">
+            <ShoppingCart size={22} className="cart-icon" />
+            {cartItemCount > 0 && <span className="cart-count">({cartItemCount})</span>}
+          </Link>
         </div>
-      </nav>
+      </div>
+
+      <div className="header-bottom-nav">
+        <nav className="navbar navbar-expand">
+          <ul className="navbar-nav">
+            <li className="nav-item"><Link to="/" className="nav-link">{t('nav.home')}</Link></li>
+            <li className="nav-item"><Link to="/categories" className="nav-link">{t('nav.categories')}</Link></li>
+            <li className="nav-item"><Link to="/brands" className="nav-link">{t('nav.brands')}</Link></li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };
 
 export default Header;
-

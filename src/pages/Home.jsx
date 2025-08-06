@@ -63,7 +63,7 @@ const Home = () => {
       <HeroSection />
 
       {/* Products Section */}
-      <div className="container my-5">
+      <div id="products-section" className="container my-5">
         <div className="text-center mb-5">
           <h2 className="display-5">{t('products.title')}</h2>
           <p className="lead">{t('products.subtitle')}</p>

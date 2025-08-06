@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react'; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // Context Providers
-import { ThemeProvider } from './contexts/ThemeContext';
+import { ThemeProvider, ThemeContext } from './contexts/ThemeContext'; 
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
 
@@ -26,53 +26,76 @@ import NotFound from './pages/NotFound';
 import './utils/i18n';
 import './App.css';
 
-function App() {
+// --- هذا هو المكون الجديد الذي سيقوم بمعالجة الثيم ---
+const ThemedApp = () => {
+  const { theme } = useContext(ThemeContext);
   const { i18n } = useTranslation();
 
+  // Effect لتغيير لغة واتجاه الصفحة
   useEffect(() => {
-    // Set document direction based on language
     document.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
 
+  // Effect لتغيير كلاس الثيم على الـ body
+  useEffect(() => {
+    const body = document.body;
+    if (theme === 'dark') {
+      body.classList.add('dark');
+    } else {
+      body.classList.remove('dark');
+    }
+    // دالة التنظيف
+    return () => {
+      body.classList.remove('dark');
+    };
+  }, [theme]);
+
+  return (
+    <div className="App">
+      <Routes>
+        {/* Public routes without layout */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        
+        {/* Routes with layout */}
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/brands" element={<Layout><Brands /></Layout>} />
+        <Route path="/categories" element={<Layout><Categories /></Layout>} />
+        <Route path="/cart" element={<Layout><Cart /></Layout>} />
+        <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
+        <Route path="/search" element={<Layout><SearchPage /></Layout>} />
+        
+        {/* Protected routes */}
+        <Route 
+          path="/profile" 
+          element={
+            <Layout>
+              <ProtectedRoute>
+                <div className="container mt-5">
+                  <h1>Profile Page</h1>
+                  <p>This is a protected route. Only authenticated users can see this.</p>
+                </div>
+              </ProtectedRoute>
+            </Layout>
+          } 
+        />
+        
+        {/* 404 Page */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+};
+
+// --- المكون الرئيسي App ---
+function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <CartProvider>
           <Router>
-            <div className="App">
-              <Routes>
-                {/* Public routes without layout */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                
-                {/* Routes with layout */}
-                <Route path="/" element={<Layout><Home /></Layout>} />
-                <Route path="/brands" element={<Layout><Brands /></Layout>} />
-                <Route path="/categories" element={<Layout><Categories /></Layout>} />
-                <Route path="/cart" element={<Layout><Cart /></Layout>} />
-                <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
-                <Route path="/search" element={<Layout><SearchPage /></Layout>} />
-                
-                {/* Protected routes */}
-                <Route 
-                  path="/profile" 
-                  element={
-                    <Layout>
-                      <ProtectedRoute>
-                        <div className="container mt-5">
-                          <h1>Profile Page</h1>
-                          <p>This is a protected route. Only authenticated users can see this.</p>
-                        </div>
-                      </ProtectedRoute>
-                    </Layout>
-                  } 
-                />
-                
-                {/* 404 Page */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </div>
+            <ThemedApp /> {/* 3. استخدم المكون الجديد هنا */}
           </Router>
         </CartProvider>
       </AuthProvider>
@@ -81,4 +104,3 @@ function App() {
 }
 
 export default App;
-

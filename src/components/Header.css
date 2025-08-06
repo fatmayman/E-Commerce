@@ -1,41 +1,98 @@
-/* Header Styles */
+/* --- General Header Styles --- */
 .header {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
-  transition: all 0.3s ease-in-out;
-  padding: 8px 20px 8px 0;
-  border-bottom: none; 
-  background-color:#FFF8DB ;
+  z-index: 1030;
+  background-color: #edf6ff;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  padding: 0;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header.scrolled {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+body.dark .header {
+  background-color: #121212;
+}
+
 body.dark .header.scrolled {
-  background-color: rgba(18, 18, 18, 0.8);
+  background-color: rgba(18, 18, 18, 0.9);
 }
 
-.header .logo-img {
-  position: absolute;
-  height: 65px;
+.header-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  width: 100%;
+  height: 60px;
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.header-section.left {
+  justify-content: flex-start;
+}
+
+.header-section.center-logo {
+  justify-content: center;
+}
+
+.header-section.right {
+  justify-content: flex-end;
+}
+
+/* --- Logo Styles --- */
+.logo-container {
+  display: inline-block;
+  position: relative;
+}
+
+.logo-img {
+  height: 75px;
+  width: auto;
   transition: transform 0.3s ease-in-out;
-  top: 0;
-  left: 43%;
 }
 
-.header.scrolled .logo-img {
+/*  تم الإبقاء على هذا الكود فقط لتصغير اللوجو عند الـ scroll */
+.header.scrolled .logo-container {
   transform: scale(0.9);
+}
+
+/* --- Bottom Bar (Nav Links) --- */
+.header-bottom-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  gap: 30px;
 }
 
 .nav-link {
   font-weight: 500;
+  font-size: 1rem;
   color: #333;
+  padding: 5px 0;
+  transition: color 0.3s;
 }
 
 body.dark .nav-link {
@@ -44,124 +101,102 @@ body.dark .nav-link {
 
 .nav-link:hover {
   color: #007bff;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
 }
 
 body.dark .nav-link:hover {
   color: #66b3ff;
 }
 
-.theme-toggle-btn {
+/* --- Icons and Buttons --- */
+.theme-toggle-btn,
+.btn.btn-link {
   background: none;
   border: none;
   cursor: pointer;
-  color: #ff0000;
-  font-size: 1.5rem;
-  transition: color 0.3s;
+  color: #333;
+  padding: 0;
 }
 
-body.dark .theme-toggle-btn {
+body.dark .theme-toggle-btn,
+body.dark .btn.btn-link {
   color: #eee;
 }
 
-.theme-toggle-btn:hover {
-  color: #d400ff;
+.theme-toggle-btn:hover,
+.btn.btn-link:hover {
+  color: #007bff;
 }
 
-body.dark .theme-toggle-btn:hover {
+body.dark .theme-toggle-btn:hover,
+body.dark .btn.btn-link:hover {
   color: #66b3ff;
 }
 
-.search-icon, .user-icon, .cart-icon {
-  color: #333;
-}
-
-body.dark .search-icon, body.dark .user-icon, body.dark .cart-icon {
-  color: #eee;
-}
-
-.custom-search-form{
-  width: 300px;
-  max-width: 100%;
-  margin-top: 0;
-  padding-top: 0;
-  margin-left: auto;
-    display: flex;
-
-}
-
-.cart-count {
-  background-color: #007bff;
-  color: white;
-  border-radius: 50%;
-  padding: 0.2em 0.6em;
-  font-size: 0.75em;
-  position: absolute;
-  top: -5px;
-  right: -5px;
-}
-
-body.dark .cart-count {
-  background-color: #66b3ff;
-}
-
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* ⬇️ الجزء اللى فيه السيرش + الايكونز */
-.navbar .container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  flex: 1;
-}
-
-/* ⬇️ الفورم بتاع السيرش */
-.custom-search-form {
-  width: 250px;
-  /* تقدر تغيريها */
-  margin-right: auto;
-  /* يزقه على يسار الأيقونات */
-  display: flex;
-  align-items: center;
-}
-
-/* ⬇️ عناصر السيرش نفسها */
-.custom-search-form .form-control {
-  font-size: 0.9rem;
-  height: 35px;
-}
-
-.custom-search-form .btn {
-  height: 35px;
-}
-
-/* ⬇️ الأيقونات */
 .cart-icon,
 .user-icon,
 .theme-toggle-btn svg,
-.dropdown-toggle svg {
-  color: var(--bs-body-color);
+.btn.btn-link svg {
+  color: inherit;
 }
 
-/* ⬇️ عدد العناصر في الكارت */
-.cart-count {
-  position: absolute;
-  top: -4px;
-  right: -8px;
-  background-color: red;
-  color: white;
-  font-size: 10px;
-  padding: 2px 5px;
-  border-radius: 50%;
+/* كود محسّن للتحكم في رابط عربة التسوق والمسافة */
+.cart-link,
+.cart-link:hover {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+  gap: 6px;
+  /* التحكم في المسافة بين الأيقونة والرقم */
 }
 
-/* ⬇️ القائمة الأساسية */
-.navbar-nav {
+.navbar {
+  padding: 0;
+}
+
+/* --- User Actions & Search Styles --- */
+.user-actions-container {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-search-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.search-form {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.4s ease-in-out;
+}
+
+.search-form.open {
+  width: 180px;
+  margin-right: 10px;
+}
+
+.search-input {
+  width: 100%;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 0 15px;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: #fff;
+}
+
+body.dark .search-input {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #eee;
+}
+
+body.dark .search-input::placeholder {
+  color: #888;
 }

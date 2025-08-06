@@ -6,7 +6,7 @@ import { Eye, EyeOff, Mail, Lock, User, UserPlus } from 'lucide-react';
 
 const Register = () => {
   const { t } = useTranslation();
-  const { register } = useAuth(); // Use register function
+  const { register } = useAuth();
   const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
@@ -26,7 +26,6 @@ const Register = () => {
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -74,7 +73,7 @@ const Register = () => {
     setIsLoading(true);
     
     try {
-      const result = await register(formData); // Call register function
+      const result = await register(formData);
       
       if (result.success) {
         navigate('/');
@@ -89,7 +88,7 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container" style={{ background: 'linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%)' }}>
+  <div className="auth-container" style={{     backgroundImage: 'linear-gradient(135deg, #497146ff, #6b9071 , #9fd4a3ff)'}}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-5">

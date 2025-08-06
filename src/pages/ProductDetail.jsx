@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useCart } from '../contexts/CartContext';
 import { fetchProductById } from '../services/api';
 import { Star, ShoppingCart, ArrowLeft } from 'lucide-react';
+import './ProductDetail.css';
+
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -71,7 +73,6 @@ const ProductDetail = () => {
     );
   }
 
-  // Create array of images (using the same image multiple times for demo)
   const images = [product.imageCover, product.imageCover, product.imageCover];
 
   return (
@@ -86,9 +87,8 @@ const ProductDetail = () => {
 
       <div className="row">
         <div className="col-md-6">
-          {/* Image Carousel */}
           <div id="productCarousel" className="carousel slide" data-bs-ride="carousel">
-            <div className="carousel-indicators">
+            <div className="carousel-indicators custom-indicators">
               {images.map((_, index) => (
                 <button
                   key={index}
@@ -114,12 +114,12 @@ const ProductDetail = () => {
                 </div>
               ))}
             </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <button className="carousel-control-prev custom-carousel-control" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon custom-carousel-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <button className="carousel-control-next custom-carousel-control" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+              <span className="carousel-control-next-icon custom-carousel-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>
           </div>
@@ -133,7 +133,7 @@ const ProductDetail = () => {
               <div className="d-flex me-2">
                 {renderStars(product.ratingsAverage)}
               </div>
-              <span className="text-muted">
+              <span className="text">
                 ({product.ratingsQuantity} {t('product.reviews')})
               </span>
             </div>

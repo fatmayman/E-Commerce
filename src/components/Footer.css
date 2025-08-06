@@ -41,6 +41,11 @@ body.dark .footer .form-control {
   color: #eee;
 }
 
+body.dark .footer .form-control::placeholder {
+  color: #d6d6d6;
+  opacity: 1;
+}
+
 .footer .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
@@ -71,6 +76,7 @@ body.dark .footer a:hover {
 
 .footer .logo-footer {
   height: 50px;
+  width: auto;
   margin-bottom: 1rem;
 }
 
@@ -78,4 +84,3 @@ body.dark .footer a:hover {
   margin: 0 0.5rem;
   font-size: 1.5rem;
 }
-
