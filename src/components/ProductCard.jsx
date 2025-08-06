@@ -61,13 +61,13 @@ const ProductCard = ({ product }) => {
           <div className="product-card-price">
             {product.priceAfterDiscount ? (
               <>
-                <span>${product.priceAfterDiscount}</span>
+                <span>EGP{product.priceAfterDiscount}</span>
                 <small className="text-muted text-decoration-line-through ms-2">
-                  ${product.price}
+                  EGP{product.price}
                 </small>
               </>
             ) : (
-              <span>${product.price}</span>
+              <span>EGP{product.price}</span>
             )}
           </div>
           
