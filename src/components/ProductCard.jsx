@@ -1,8 +1,3 @@
-/*
- * ProductCard.jsx
- * Component for displaying a single product card with details like image, title, brand, rating, and price.
- */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

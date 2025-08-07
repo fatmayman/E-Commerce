@@ -1,8 +1,3 @@
-/*
- * HeroSection.jsx
- * Component for the main hero section with a carousel displaying categories.
- */
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fetchCategories } from '../services/api';

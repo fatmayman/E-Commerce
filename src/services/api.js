@@ -1,8 +1,3 @@
-/*
- * api.js
- * Centralized API service for fetching data from the e-commerce backend.
- */
-
 const API_BASE_URL = 'https://ecommerce.routemisr.com/api/v1';
 
 // Fetches a list of all products

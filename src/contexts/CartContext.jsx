@@ -1,8 +1,3 @@
-/*
- * CartContext.jsx
- * Provides cart management context to the application, including adding, removing, and updating items in the cart.
- */
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const CartContext = createContext();

@@ -1,8 +1,3 @@
-/*
- * Home.jsx
- * Page component for the home page, displaying a hero section and a list of products.
- */
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fetchProducts } from '../services/api';

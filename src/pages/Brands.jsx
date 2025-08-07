@@ -1,8 +1,3 @@
-/*
- * Brands.jsx
- * Page component for displaying a list of brands.
- */
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fetchBrands } from '../services/api';

@@ -1,8 +1,3 @@
-/*
- * Register.jsx
- * Page component for user registration, handling form submission and new user creation.
- */
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

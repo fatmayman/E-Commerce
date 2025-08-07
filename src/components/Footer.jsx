@@ -1,8 +1,3 @@
-/*
- * Footer.jsx
- * Component for the application footer, including a rating submission form and social links.
- */
-
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, Mail } from 'lucide-react';

@@ -1,14 +1,10 @@
-/*
- * Header.css
- * Styles for the header component, including navigation, search, user actions, and theme/language toggles.
- */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1030;
-  background-color: #cbe0e4;
+  background-color: #bfdde4;
   transition: background-image 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   padding: 0;
   height: 90px;

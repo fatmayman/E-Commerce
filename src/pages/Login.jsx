@@ -1,8 +1,3 @@
-/*
- * Login.jsx
- * Page component for user login, handling form submission and authentication.
- */
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

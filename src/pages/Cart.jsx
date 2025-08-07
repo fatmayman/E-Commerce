@@ -1,8 +1,3 @@
-/*
- * Cart.jsx
- * Page component for displaying and managing items in the shopping cart.
- */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

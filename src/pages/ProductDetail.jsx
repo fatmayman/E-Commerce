@@ -1,8 +1,3 @@
-/*
- * ProductDetail.jsx
- * Page component for displaying detailed information about a single product.
- */
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

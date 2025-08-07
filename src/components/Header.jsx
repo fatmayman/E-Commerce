@@ -1,8 +1,3 @@
-/*
- * Header.jsx
- * Component for the application header, including navigation, search, user actions, and theme/language toggles.
- */
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -55,13 +50,8 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${searchQuery.trim()}`);
-      setSearchQuery("");
-      if (isMobileMenuOpen) setIsMobileMenuOpen(false);
-    }
+ const handleSearchSubmit = (e) => {
+  e.preventDefault();
   };
 
   const handleLanguageToggle = () => {
@@ -160,7 +150,7 @@ const Header = () => {
             className="search-input"
             placeholder={t('nav.search') + '...'}
             value={searchQuery}
-            // onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button type="submit" className="btn btn-link p-0"><Search size={22} /></button>
         </form>

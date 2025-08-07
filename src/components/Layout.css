@@ -1,7 +1,3 @@
-/*
- * Layout.css
- * Main layout component that includes the Header, Footer, and renders children components within a consistent structure.
- */
 .layout-container {
   min-height: 100vh;
   display: flex;

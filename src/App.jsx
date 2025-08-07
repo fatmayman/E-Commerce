@@ -1,19 +1,11 @@
-/*
- * App.jsx
- * Main application component responsible for routing, context providers, and theme management.
- */
-
 import React, { useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
 import { ThemeProvider, ThemeContext } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
-
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
-
 import Home from './pages/Home';
 import Brands from './pages/Brands';
 import Categories from './pages/Categories';
@@ -25,11 +17,6 @@ import NotFound from './pages/NotFound';
 
 import './utils/i18n';
 import './App.css';
-
-/*
- * ThemedApp Component
- * Handles theme and language direction based on context and i18n.
- */
 const ThemedApp = () => {
   const { theme } = useContext(ThemeContext);
   const { i18n } = useTranslation();
@@ -83,10 +70,6 @@ const ThemedApp = () => {
   );
 };
 
-/*
- * App Component
- * Wraps the application with necessary context providers and router.
- */
 function App() {
   return (
     <ThemeProvider>

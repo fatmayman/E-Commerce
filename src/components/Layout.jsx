@@ -1,8 +1,3 @@
-/*
- * Layout.jsx
- * Main layout component that includes the Header, Footer, and renders children components within a consistent structure.
- */
-
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';

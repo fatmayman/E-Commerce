@@ -20,7 +20,7 @@ const NotFound = () => {
         </h1>
         
         <p className="not-found-description">
-{t('errors.404Description')}
+        {t('errors.404Description')}
         </p>
 
         <div className="not-found-buttons">

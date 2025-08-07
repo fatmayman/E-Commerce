@@ -1,8 +1,3 @@
-/*
- * AuthContext.jsx
- * Provides authentication context to the application, managing user login, registration, and logout.
- */
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();

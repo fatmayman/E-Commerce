@@ -1,8 +1,3 @@
-/*
- * ThemeContext.jsx
- * Provides theme management context to the application, allowing toggling between light and dark modes.
- */
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export const ThemeContext = createContext();
