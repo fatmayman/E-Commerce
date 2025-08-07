@@ -80,7 +80,7 @@ const HeroSection = () => {
               <div
                 className="hero-slide d-flex align-items-center justify-content-center"
                 style={{
-                  height: '544px',
+                  height: '100vh',
                   backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${category.image})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
