@@ -1,4 +1,7 @@
-/* --- General Header Styles --- */
+/*
+ * Header.css
+ * Styles for the header component, including navigation, search, user actions, and theme/language toggles.
+ */
 .header {
   position: fixed;
   top: 0;
@@ -58,7 +61,6 @@ body.dark .header.scrolled {
   justify-content: flex-end;
 }
 
-/* --- Logo Styles --- */
 .logo-container {
   display: inline-block;
   position: relative;
@@ -74,7 +76,6 @@ body.dark .header.scrolled {
   transform: scale(0.9);
 }
 
-/* --- Bottom Bar (Nav Links) --- */
 .header-bottom-nav {
   display: flex;
   justify-content: center;
@@ -111,7 +112,6 @@ body.dark .nav-link:hover {
   color: #66b3ff;
 }
 
-/* --- Icons and Buttons --- */
 .theme-toggle-btn,
 .btn.btn-link {
   background: none;
@@ -155,7 +155,6 @@ body.dark .btn.btn-link:hover {
   padding: 0;
 }
 
-/* --- User Actions & Search Styles --- */
 .user-actions-container {
   display: flex;
   align-items: center;
@@ -164,8 +163,8 @@ body.dark .btn.btn-link:hover {
 
 .header-search-container {
   display: flex;
-  align-items: center;
   flex-direction: row-reverse;
+  align-items: center;
 }
 
 .search-form {
@@ -200,10 +199,8 @@ body.dark .search-input::placeholder {
   color: #888;
 }
 
-/* --- Mobile Navigation --- */
 .mobile-menu-toggle {
   display: none;
-  /* Hidden on desktop */
   background: none;
   border: none;
   color: #333;
@@ -219,10 +216,8 @@ body.dark .mobile-menu-toggle {
 
 .mobile-nav-container {
   display: none;
-  /* Hidden on desktop */
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 992px) {
   .header-top-bar {
     padding: 10px 20px;
@@ -249,11 +244,9 @@ body.dark .mobile-menu-toggle {
   }
 }
 
-/* --- Mobile View (max-width: 768px) --- */
 @media (max-width: 768px) {
   .header {
     height: 70px;
-    /* Fixed height for mobile header */
     flex-direction: row;
     padding: 0 20px;
   }
@@ -263,18 +256,15 @@ body.dark .mobile-menu-toggle {
     height: 100%;
   }
 
-  /* Hide desktop navigation and user actions */
   .header-bottom-nav,
   .user-actions-container {
     display: none;
   }
 
-  /* Show mobile menu toggle button */
   .mobile-menu-toggle {
     display: block;
   }
 
-  /* Adjust header sections for mobile layout */
   .header-section.left {
     justify-content: flex-start;
   }
@@ -293,7 +283,6 @@ body.dark .mobile-menu-toggle {
     height: 55px;
   }
 
-  /* Styles for the mobile navigation container that slides down */
   .mobile-nav-container {
     display: flex;
     flex-direction: column;
@@ -315,12 +304,10 @@ body.dark .mobile-menu-toggle {
     background-color: #121212;
   }
 
-  /* When the menu is open, slide it into view */
   .header.menu-open .mobile-nav-container {
     transform: translateY(0);
   }
 
-  /* Mobile navigation links */
   .mobile-nav-container .navbar-nav {
     flex-direction: column;
     gap: 15px;
@@ -339,7 +326,6 @@ body.dark .mobile-menu-toggle {
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 
-  /* Mobile user actions */
   .mobile-nav-container .user-actions-container {
     display: flex;
     flex-direction: column;
@@ -390,3 +376,5 @@ body.dark .mobile-menu-toggle {
     height: calc(100vh - 60px);
   }
 }
+
+

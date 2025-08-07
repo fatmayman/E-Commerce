@@ -1,4 +1,7 @@
-/* Brand Card Styles */
+/*
+ * BrandCard.css
+ * Styles for the brand card component, including layout, imagery, and typography.
+ */
 .brand-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -64,9 +67,6 @@ body.dark .brand-card-slug {
   color: #adb5bd;
 }
 
-
-
-/* Responsive adjustments for BrandCard.css */
 @media (max-width: 768px) {
   .brand-card-image {
     height: 120px;

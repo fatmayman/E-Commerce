@@ -1,3 +1,8 @@
+/*
+ * AuthContext.jsx
+ * Provides authentication context to the application, managing user login, registration, and logout.
+ */
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();
@@ -29,11 +34,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 500)); 
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       if (email === 'test@example.com' && password === '123456') {
         const mockUser = {
-          id: 1,  
+          id: 1,
           name: 'Test User',
           email: email,
           avatar: null
@@ -51,8 +56,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-
-      await new Promise(resolve => setTimeout(resolve, 500)); 
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       const mockUser = {
         id: Date.now(),
@@ -88,4 +92,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
 

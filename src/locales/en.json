@@ -127,7 +127,7 @@
   },
   "errors": {
     "404": "Page Not Found",
-    "404Description": "The page you are looking for doesn't exist.",
+    "404Description": " The page you're looking for can’t be found. It might have been removed, had its name changed, or is temporarily unavailable. Please check the URL for mistakes and try again. Or return to the homepage to continue browsing.",
     "goHome": "Go Home",
     "networkError": "Network Error",
     "serverError": "Server Error"

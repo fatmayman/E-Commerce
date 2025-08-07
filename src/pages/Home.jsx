@@ -1,3 +1,8 @@
+/*
+ * Home.jsx
+ * Page component for the home page, displaying a hero section and a list of products.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fetchProducts } from '../services/api';
@@ -59,10 +64,8 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
       <HeroSection />
 
-      {/* Products Section */}
       <div id="products-section" className="container my-5">
         <div className="text-center mb-5">
           <h2 className="display-5">{t('products.title')}</h2>
@@ -88,4 +91,5 @@ const Home = () => {
 };
 
 export default Home;
+
 

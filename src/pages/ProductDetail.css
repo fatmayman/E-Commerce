@@ -7,7 +7,7 @@
 color: rgb(185, 4, 4);
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
   .product-detail-container {
     padding: 1rem 0.5rem;
@@ -63,7 +63,6 @@ color: rgb(185, 4, 4);
   }
 }
 
-/* Additional Responsive adjustments for ProductDetail.css */
 @media (max-width: 480px) {
   .product-image {
     height: 200px;

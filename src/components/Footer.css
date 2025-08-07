@@ -1,4 +1,4 @@
-/* Footer Styles */
+/* Footer.css*/
 .footer {
   padding: 2rem 0;
   border-top: 1px solid #ddd;
@@ -85,9 +85,6 @@ body.dark .footer a:hover {
   transition: color 0.3s;
 }
 
-
-
-/* Responsive adjustments for Footer.css */
 @media (max-width: 768px) {
   .footer {
     padding: 1.5rem 0;

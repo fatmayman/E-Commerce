@@ -109,7 +109,7 @@
   animation: bounce 2s infinite;
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
   .not-found-number {
     font-size: 6rem;
@@ -133,9 +133,6 @@
   }
 }
 
-
-
-/* Additional Responsive adjustments for NotFound.css */
 @media (max-width: 576px) {
   .not-found-number {
     font-size: 5rem;

@@ -1,5 +1,11 @@
+/*
+ * api.js
+ * Centralized API service for fetching data from the e-commerce backend.
+ */
+
 const API_BASE_URL = 'https://ecommerce.routemisr.com/api/v1';
 
+// Fetches a list of all products
 export const fetchProducts = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/products`);
@@ -14,6 +20,7 @@ export const fetchProducts = async () => {
   }
 };
 
+// Fetches a single product by its ID
 export const fetchProductById = async (id) => {
   try {
     const response = await fetch(`${API_BASE_URL}/products/${id}`);
@@ -28,6 +35,7 @@ export const fetchProductById = async (id) => {
   }
 };
 
+// Fetches a list of all brands
 export const fetchBrands = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/brands`);
@@ -42,6 +50,7 @@ export const fetchBrands = async () => {
   }
 };
 
+// Fetches a list of all categories
 export const fetchCategories = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/categories`);
@@ -55,4 +64,5 @@ export const fetchCategories = async () => {
     throw error;
   }
 };
+
 

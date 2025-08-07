@@ -8,7 +8,6 @@ const BrandCard = ({ brand }) => {
       to={`/brands/${brand._id}`}
       className="brand-card"
     >
-      {/* Image Container */}
       <div className="brand-card-image-container">
         <img
           src={brand.image || 'https://via.placeholder.com/200'}
@@ -18,13 +17,11 @@ const BrandCard = ({ brand }) => {
         />
       </div>
 
-      {/* Content */}
       <div className="brand-card-body">
         <h3 className="brand-card-name">
           {brand.name}
         </h3>
         
-        {/* Optional: Add product count if available */}
         {brand.productCount && (
           <p className="brand-card-slug">
             {brand.productCount} products
@@ -36,4 +33,5 @@ const BrandCard = ({ brand }) => {
 };
 
 export default BrandCard;
+
 

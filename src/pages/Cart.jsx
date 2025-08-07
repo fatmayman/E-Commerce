@@ -1,3 +1,8 @@
+/*
+ * Cart.jsx
+ * Page component for displaying and managing items in the shopping cart.
+ */
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -46,7 +51,6 @@ const Cart = () => {
 
   return (
     <div className="container cart-container">
-      {/* Header */}
       <div className="cart-header d-flex justify-content-between align-items-center">
         <div>
           <h1 className="cart-title">{t('cart.title')}</h1>
@@ -58,19 +62,16 @@ const Cart = () => {
       </div>
 
       <div className="row">
-        {/* Cart Items */}
         <div className="col-lg-8">
           {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
               <div className="d-flex align-items-center">
-                {/* Product Image */}
                 <img
                   src={item.imageCover || item.image}
                   alt={item.title}
                   className="cart-item-image"
                 />
 
-                {/* Product Details */}
                 <div className="cart-item-details">
                   <h3 className="cart-item-title">{item.title}</h3>
                   <p className="text-muted mb-1">
@@ -79,7 +80,6 @@ const Cart = () => {
                   <p className="cart-item-price">{formatPrice(item.price)}</p>
                 </div>
 
-                {/* Actions */}
                 <div className="cart-item-actions">
                   <div className="quantity-controls">
                     <button
@@ -119,7 +119,6 @@ const Cart = () => {
           ))}
         </div>
 
-        {/* Order Summary */}
         <div className="col-lg-4">
           <div className="cart-summary">
             <h2 className="summary-title">Order Summary</h2>
@@ -154,4 +153,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
 

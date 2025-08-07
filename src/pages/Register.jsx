@@ -1,3 +1,8 @@
+/*
+ * Register.jsx
+ * Page component for user registration, handling form submission and new user creation.
+ */
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -20,9 +25,6 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // =================================================================
-  // == هذا هو الكود الذي يجب إعادته ==
-  // =================================================================
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -89,9 +91,6 @@ const Register = () => {
       setIsLoading(false);
     }
   };
-  // =================================================================
-  // == نهاية الكود الذي يجب إعادته ==
-  // =================================================================
 
   return (
     <div className="auth-container" style={{ backgroundImage: 'linear-gradient(135deg, #497146ff, #6b9071 , #9fd4a3ff)'}}>
@@ -260,3 +259,5 @@ const Register = () => {
 };
 
 export default Register;
+
+

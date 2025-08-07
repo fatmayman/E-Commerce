@@ -1,14 +1,19 @@
+/*
+ * Footer.jsx
+ * Component for the application footer, including a rating submission form and social links.
+ */
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext'; 
-import logoLight from '../assets/default-monochrome.svg'; 
-import logoDark from '../assets/default-monochrome-white.svg'; 
+import { useTheme } from '../contexts/ThemeContext';
+import logoLight from '../assets/default-monochrome.svg';
+import logoDark from '../assets/default-monochrome-white.svg';
 import './Footer.css';
 
 const Footer = () => {
   const { t } = useTranslation();
-  const { theme } = useTheme(); 
+  const { theme } = useTheme();
   const [ratings, setRatings] = useState([]);
   const [newRating, setNewRating] = useState({ name: '', email: '', message: '' });
 
@@ -18,7 +23,7 @@ const Footer = () => {
     e.preventDefault();
     if (newRating.name && newRating.email && newRating.message) {
       setRatings([...ratings, newRating]);
-      setNewRating({ name: '', email: '', message: '' });
+      setNewRating({ name: '', email: '' , message: '' });
     }
   };
 
@@ -98,3 +103,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+

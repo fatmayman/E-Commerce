@@ -12,27 +12,17 @@ const NotFound = () => {
     <div className="not-found-container">
       <div className="not-found-content">
         <div className="not-found-icon">
-<img src={errorImg} alt="404 ERROR" />
+          <img src={errorImg} alt="404 ERROR" />
         </div>
         
-        {/* 404 Number */}
-        {/* <div className="not-found-number">
-          404
-        </div> */}
-        
-        {/* Error Message */}
         <h1 className="not-found-title">
           {t('errors.404')}
         </h1>
         
         <p className="not-found-description">
-        The page you're looking for can’t be found.
-        It might have been removed, had its name changed, or is temporarily unavailable.
-        Please check the URL for mistakes and try again.
-        Or return to the homepage to continue browsing.
+{t('errors.404Description')}
         </p>
 
-        {/* Actions */}
         <div className="not-found-buttons">
           <Link
             to="/"
@@ -56,4 +46,5 @@ const NotFound = () => {
 };
 
 export default NotFound;
+
 

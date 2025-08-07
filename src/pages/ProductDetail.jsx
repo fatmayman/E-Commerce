@@ -1,3 +1,8 @@
+/*
+ * ProductDetail.jsx
+ * Page component for displaying detailed information about a single product.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -5,7 +10,6 @@ import { useCart } from '../contexts/CartContext';
 import { fetchProductById } from '../services/api';
 import { Star, ShoppingCart, ArrowLeft } from 'lucide-react';
 import './ProductDetail.css';
-
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -19,6 +23,7 @@ const ProductDetail = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const loadProduct = async () => {
       try {
         setLoading(true);
@@ -37,7 +42,7 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (product) {
       addToCart(product);
-    }
+    }ش
   };
 
   const renderStars = (rating) => {
@@ -97,7 +102,6 @@ const ProductDetail = () => {
                   data-bs-slide-to={index}
                   className={index === selectedImageIndex ? 'active' : ''}
                   aria-current={index === selectedImageIndex ? 'true' : 'false'}
-                  aria-label={`Slide ${index + 1}`}
                   onClick={() => setSelectedImageIndex(index)}
                 ></button>
               ))}
@@ -177,4 +181,5 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
 

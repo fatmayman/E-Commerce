@@ -1,3 +1,8 @@
+/*
+ * Brands.jsx
+ * Page component for displaying a list of brands.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fetchBrands } from '../services/api';
@@ -12,22 +17,21 @@ const Brands = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-  const loadBrands = async () => {
-    try {
-      setIsLoading(true);
-      const response = await fetchBrands();
-      setBrands(response || []);
-    } catch (err) {
-      setError(err.message);
-      console.error('Error fetching brands:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    const loadBrands = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetchBrands();
+        setBrands(response || []);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error fetching brands:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  loadBrands();
-}, []);
-
+    loadBrands();
+  }, []);
 
   if (isLoading) {
     return (
@@ -64,13 +68,11 @@ const Brands = () => {
 
   return (
     <div className="container brands-container">
-      {/* Header */}
       <div className="brands-header">
         <h1>{t('brands.title')}</h1>
         <p>{t('brands.allBrands')}</p>
       </div>
 
-      {/* Brands Grid */}
       {brands.length === 0 ? (
         <div className="no-brands-message">
           <p>{t('brands.noBrands')}</p>
@@ -87,4 +89,5 @@ const Brands = () => {
 };
 
 export default Brands;
+
 

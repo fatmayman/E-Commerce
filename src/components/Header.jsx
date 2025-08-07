@@ -1,12 +1,17 @@
+/*
+ * Header.jsx
+ * Component for the application header, including navigation, search, user actions, and theme/language toggles.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useTheme } from '../contexts/ThemeContext';
-import { User, ShoppingCart, Moon, Sun, Globe, Search, X, Menu } from 'lucide-react'; 
-import logoLight from '../assets/default-monochrome.svg'; 
-import logoDark from '../assets/default-monochrome-white.svg'; 
+import { User, ShoppingCart, Moon, Sun, Globe, Search, X, Menu } from 'lucide-react';
+import logoLight from '../assets/default-monochrome.svg';
+import logoDark from '../assets/default-monochrome-white.svg';
 import './Header.css';
 
 const Header = () => {
@@ -23,14 +28,12 @@ const Header = () => {
 
   const logoSrc = theme === 'dark' ? logoDark : logoLight;
 
-  // Close mobile menu on route change
   useEffect(() => {
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
   }, [navigate]);
 
-  // Handle body scroll lock when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -77,7 +80,6 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-top-bar">
-        {/* --- Left Section: Mobile Menu Toggle & Desktop Icons --- */}
         <div className="header-section left">
           <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -92,14 +94,12 @@ const Header = () => {
           </div>
         </div>
 
-        {/* --- Center Section: Logo --- */}
         <div className="header-section center-logo">
           <Link to="/" className="navbar-brand logo-container">
             <img src={logoSrc} alt="Illurea" className="logo-img" />
           </Link>
         </div>
 
-        {/* --- Right Section: User Actions & Cart --- */}
         <div className="header-section right">
           <div className="user-actions-container">
             <div className="header-search-container">
@@ -143,7 +143,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* --- Desktop Bottom Navigation Bar --- */}
       <div className="header-bottom-nav">
         <nav className="navbar navbar-expand">
           <ul className="navbar-nav">
@@ -154,21 +153,18 @@ const Header = () => {
         </nav>
       </div>
 
-      {/* --- Mobile Navigation Container --- */}
       <div className="mobile-nav-container">
-        {/* Search Bar */}
         <form onSubmit={handleSearchSubmit} className="header-search-container">
           <input
             type="text"
             className="search-input"
             placeholder={t('nav.search') + '...'}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            // onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button type="submit" className="btn btn-link p-0"><Search size={22} /></button>
         </form>
 
-        {/* Navigation Links */}
         <nav className="navbar">
           <ul className="navbar-nav">
             <li className="nav-item"><Link to="/" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.home')}</Link></li>
@@ -177,7 +173,6 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* User Actions */}
         <div className="user-actions-container">
           {user ? (
             <>
@@ -197,3 +192,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

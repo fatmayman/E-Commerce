@@ -1,4 +1,7 @@
-/* Product Card Styles */
+/*
+ * ProductCard.css
+ * Styles for the product card component, including layout, imagery, and typography.
+ */
 .product-card-link {
   text-decoration: none;
   color: inherit;
@@ -51,7 +54,6 @@ body.dark .product-card:hover {
 
 .product-card-body {
   padding: 0.75rem;
-  /* Increased padding */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -60,7 +62,6 @@ body.dark .product-card:hover {
 
 .product-card-title {
   font-size: 0.9rem;
-  /* Slightly smaller to fit better */
   font-weight: 600;
   margin-bottom: 1px;
   color: #333;
@@ -92,7 +93,8 @@ body.dark .product-card-brand {
 }
 
 .product-card-stars {
-  display: flex;}
+  display: flex;
+}
 
 .product-card-rating-text {
   font-size: 0.8rem;
@@ -180,7 +182,10 @@ body.dark .star-empty {
   color: #495057;
 }
 
-/* Responsive adjustments */
+.addtocart {
+  font-size: 16px;
+}
+
 @media (max-width: 576px) {
   .product-card {
     max-width: 100%;
@@ -195,11 +200,6 @@ body.dark .star-empty {
   }
 }
 
-.addtocart {
-  font-size: 16px;
-}
-
-/* Additional Responsive adjustments for ProductCard.css */
 @media (min-width: 577px) and (max-width: 992px) {
   .product-card {
     max-width: 220px;
@@ -242,14 +242,14 @@ body.dark .star-empty {
   }
 
   .product-card-actions {
-    flex-direction: row; /* Keep buttons in a row on very small screens if space allows */
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .product-card-btn {
     flex: none;
-    width: 48%; /* Allow two buttons per row */
+    width: 48%;
     margin-bottom: 0.5rem;
   }
 }
