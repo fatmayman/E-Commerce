@@ -170,10 +170,10 @@ const Register = () => {
                     />
                     <button
                       type="button"
-                      className="btn btn-outline-light"
+                      className="btn btn-outline-light pass-btn"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
                     </button>
                     {errors.password && (
                       <div className="invalid-feedback">
@@ -201,7 +201,7 @@ const Register = () => {
                     />
                     <button
                       type="button"
-                      className="btn btn-outline-light"
+                      className="btn btn-outline-light pass-btn"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     >
                       {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}

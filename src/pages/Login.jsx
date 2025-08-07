@@ -133,7 +133,7 @@ const Login = () => {
                     />
                     <button
                       type="button"
-                      className="btn btn-outline-light"
+                      className="btn btn-outline-light log-btn"
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
