@@ -28,3 +28,5 @@ The app uses the following external APIs:
 - Products: `https://ecommerce.routemisr.com/api/v1/products`
 - Brands: `https://ecommerce.routemisr.com/api/v1/brands`
 - Categories: `https://ecommerce.routemisr.com/api/v1/categories`
+
+---
