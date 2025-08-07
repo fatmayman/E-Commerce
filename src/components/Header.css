@@ -5,10 +5,10 @@
   left: 0;
   right: 0;
   z-index: 1030;
-  background-color: #edf6ff;
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: #cbe0e4;
+  transition: background-image 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   padding: 0;
-  height: 90px;
+  height: 90px; 
   display: flex;
   flex-direction: column;
   justify-content: center;

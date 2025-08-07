@@ -20,6 +20,9 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
+  // =================================================================
+  // == هذا هو الكود الذي يجب إعادته ==
+  // =================================================================
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -86,36 +89,39 @@ const Register = () => {
       setIsLoading(false);
     }
   };
+  // =================================================================
+  // == نهاية الكود الذي يجب إعادته ==
+  // =================================================================
 
   return (
-  <div className="auth-container" style={{     backgroundImage: 'linear-gradient(135deg, #497146ff, #6b9071 , #9fd4a3ff)'}}>
+    <div className="auth-container" style={{ backgroundImage: 'linear-gradient(135deg, #497146ff, #6b9071 , #9fd4a3ff)'}}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-5">
-            <div className="auth-form">
-              <div className="text-center mb-4">
-                <div className="auth-icon mb-3">
-                  <UserPlus size={48} />
+            <div className="auth-form p-4">
+              <div className="text-center mb-3">
+                <div className="auth-icon mb-2">
+                  <UserPlus size={40} />
                 </div>
-                <h2 className="h3 mb-2">{t('auth.register')}</h2>
-                <p className="text-light opacity-75">{t('auth.createAccount')}</p>
+                <h2 className="h4 mb-1">{t('auth.register')}</h2>
+                <p className="text-light opacity-75 small">{t('auth.createAccount')}</p>
               </div>
 
               {errors.general && (
-                <div className="alert alert-danger" role="alert">
+                <div className="alert alert-danger py-2" role="alert">
                   {errors.general}
                 </div>
               )}
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="name" className="form-label">
+                  <label htmlFor="name" className="form-label small">
                     <User size={16} className="me-2" />
                     {t('auth.fullName')}
                   </label>
                   <input
                     type="text"
-                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    className={`form-control form-control-sm ${errors.name ? 'is-invalid' : ''}`}
                     id="name"
                     name="name"
                     value={formData.name}
@@ -131,13 +137,13 @@ const Register = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
+                  <label htmlFor="email" className="form-label small">
                     <Mail size={16} className="me-2" />
                     {t('auth.email')}
                   </label>
                   <input
                     type="email"
-                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                    className={`form-control form-control-sm ${errors.email ? 'is-invalid' : ''}`}
                     id="email"
                     name="email"
                     value={formData.email}
@@ -153,14 +159,14 @@ const Register = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
+                  <label htmlFor="password" className="form-label small">
                     <Lock size={16} className="me-2" />
                     {t('auth.password')}
                   </label>
-                  <div className="input-group">
+                  <div className="input-group input-group-sm">
                     <input
                       type={showPassword ? 'text' : 'password'}
-                      className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                      className={`form-control form-control-sm ${errors.password ? 'is-invalid' : ''}`}
                       id="password"
                       name="password"
                       value={formData.password}
@@ -184,14 +190,14 @@ const Register = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="confirmPassword" className="form-label">
+                  <label htmlFor="confirmPassword" className="form-label small">
                     <Lock size={16} className="me-2" />
                     {t('auth.confirmPassword')}
                   </label>
-                  <div className="input-group">
+                  <div className="input-group input-group-sm">
                     <input
                       type={showConfirmPassword ? 'text' : 'password'}
-                      className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
+                      className={`form-control form-control-sm ${errors.confirmPassword ? 'is-invalid' : ''}`}
                       id="confirmPassword"
                       name="confirmPassword"
                       value={formData.confirmPassword}
@@ -214,10 +220,10 @@ const Register = () => {
                   </div>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-3">
                   <div className="form-check">
                     <input className="form-check-input" type="checkbox" id="agreeTerms" required />
-                    <label className="form-check-label text-light" htmlFor="agreeTerms">
+                    <label className="form-check-label text-light small" htmlFor="agreeTerms">
                       {t('auth.agreeToTerms')}
                     </label>
                   </div>
@@ -225,7 +231,7 @@ const Register = () => {
 
                 <button
                   type="submit"
-                  className="btn btn-light w-100 mb-3"
+                  className="btn btn-light w-100 mb-3 btn-sm"
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -239,8 +245,8 @@ const Register = () => {
                 </button>
 
                 <div className="text-center">
-                  <span className="text-light opacity-75">{t('auth.alreadyHaveAccount')} </span>
-                  <Link to="/login" className="text-light text-decoration-none fw-bold">
+                  <span className="text-light opacity-75 small">{t('auth.alreadyHaveAccount')} </span>
+                  <Link to="/login" className="text-light text-decoration-none fw-bold small">
                     {t('auth.signIn')}
                   </Link>
                 </div>
@@ -254,4 +260,3 @@ const Register = () => {
 };
 
 export default Register;
-

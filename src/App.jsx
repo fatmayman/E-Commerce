@@ -19,7 +19,6 @@ import Cart from './pages/Cart';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProductDetail from './pages/ProductDetail';
-import SearchPage from './pages/SearchPage';
 import NotFound from './pages/NotFound';
 
 // Import i18n configuration
@@ -64,7 +63,6 @@ const ThemedApp = () => {
         <Route path="/categories" element={<Layout><Categories /></Layout>} />
         <Route path="/cart" element={<Layout><Cart /></Layout>} />
         <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
-        <Route path="/search" element={<Layout><SearchPage /></Layout>} />
         
         {/* Protected routes */}
         <Route 

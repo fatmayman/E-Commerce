@@ -76,9 +76,9 @@ const Footer = () => {
               <button type="submit" className="btn btn-primary">{t('footer.send')}</button>
             </form>
           </div>
-          <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
+          <div className=" social-links col-md-6 d-flex flex-column justify-content-center align-items-center">
             <img src={logoSrc} alt="Illurea Logo" className="logo-footer" />
-            <p>&copy; {new Date().getFullYear()} Illurea. {t('footer.rightsReserved')}</p>
+            <p>&copy; {new Date().getFullYear()} Illurea {t('footer.rightsReserved')}</p>
             <div>
               <a href="https://www.linkedin.com/in/fatmayman/" target="_blank" rel="noopener noreferrer" className="me-3">
                 <Linkedin size={24} />
@@ -86,7 +86,7 @@ const Footer = () => {
               <a href="https://github.com/fatmayman" target="_blank" rel="noopener noreferrer" className="me-3">
                 <Github size={24} />
               </a>
-              <a href="mailto:1fatymayman@gmail.com">
+              <a href="mailto:1fatymayman@gmail.com"  className="me-3">
                 <Mail size={24} />
               </a>
             </div>
