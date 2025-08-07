@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useTheme } from '../contexts/ThemeContext';
-import { User, ShoppingCart, Moon, Sun, Globe, Search, X } from 'lucide-react'; 
+import { User, ShoppingCart, Moon, Sun, Globe, Search, X, Menu } from 'lucide-react'; 
 import logoLight from '../assets/default-monochrome.svg'; 
 import logoDark from '../assets/default-monochrome-white.svg'; 
 import './Header.css';
@@ -18,9 +18,29 @@ const Header = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const logoSrc = theme === 'dark' ? logoDark : logoLight;
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  }, [navigate]);
+
+  // Handle body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -28,8 +48,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   const handleSearchSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${searchQuery.trim()}`);
+      setSearchQuery("");
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+    }
   };
 
   const handleLanguageToggle = () => {
@@ -39,29 +68,38 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
     navigate('/');
   };
 
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`header ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-top-bar">
+        {/* --- Left Section: Mobile Menu Toggle & Desktop Icons --- */}
         <div className="header-section left">
-          <button onClick={toggleTheme} className="theme-toggle-btn" title={theme === 'dark' ? t('common.lightMode') : t('common.darkMode')}>
-            {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
+          <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-          <button onClick={handleLanguageToggle} className="btn btn-link p-0" title={t('common.language')}>
-            <Globe size={22} />
-          </button>
+          <div className="desktop-icons" style={{ display: 'flex', gap: '20px' }}>
+            <button onClick={toggleTheme} className="theme-toggle-btn" title={theme === 'dark' ? t('common.lightMode') : t('common.darkMode')}>
+              {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
+            </button>
+            <button onClick={handleLanguageToggle} className="btn btn-link p-0" title={t('common.language')}>
+              <Globe size={22} />
+            </button>
+          </div>
         </div>
 
+        {/* --- Center Section: Logo --- */}
         <div className="header-section center-logo">
           <Link to="/" className="navbar-brand logo-container">
             <img src={logoSrc} alt="Illurea" className="logo-img" />
           </Link>
         </div>
 
+        {/* --- Right Section: User Actions & Cart --- */}
         <div className="header-section right">
           <div className="user-actions-container">
             <div className="header-search-container">
@@ -74,13 +112,12 @@ const Header = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </form>
-              <button onClick={() => setIsSearchOpen(!isSearchOpen)} className="btn btn-link p-0">
+              <button onClick={() => setIsSearchOpen(!isSearchOpen)} className="btn btn-link p-0" aria-label="Toggle search">
                 {isSearchOpen ? <X size={22} /> : <Search size={22} />}
               </button>
             </div>
-
             <div className="dropdown">
-              <button className="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false">
+              <button className="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false" aria-label="User menu">
                 <User size={22} className="user-icon" />
               </button>
               <ul className="dropdown-menu dropdown-menu-end">
@@ -99,14 +136,14 @@ const Header = () => {
               </ul>
             </div>
           </div>
-
-          <Link to="/cart" className="btn btn-link p-0 cart-link">
+          <Link to="/cart" className="btn btn-link p-0 cart-link" aria-label={`Cart with ${cartItemCount} items`}>
             <ShoppingCart size={22} className="cart-icon" />
             {cartItemCount > 0 && <span className="cart-count">({cartItemCount})</span>}
           </Link>
         </div>
       </div>
 
+      {/* --- Desktop Bottom Navigation Bar --- */}
       <div className="header-bottom-nav">
         <nav className="navbar navbar-expand">
           <ul className="navbar-nav">
@@ -115,6 +152,45 @@ const Header = () => {
             <li className="nav-item"><Link to="/brands" className="nav-link">{t('nav.brands')}</Link></li>
           </ul>
         </nav>
+      </div>
+
+      {/* --- Mobile Navigation Container --- */}
+      <div className="mobile-nav-container">
+        {/* Search Bar */}
+        <form onSubmit={handleSearchSubmit} className="header-search-container">
+          <input
+            type="text"
+            className="search-input"
+            placeholder={t('nav.search') + '...'}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type="submit" className="btn btn-link p-0"><Search size={22} /></button>
+        </form>
+
+        {/* Navigation Links */}
+        <nav className="navbar">
+          <ul className="navbar-nav">
+            <li className="nav-item"><Link to="/" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.home')}</Link></li>
+            <li className="nav-item"><Link to="/categories" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.categories')}</Link></li>
+            <li className="nav-item"><Link to="/brands" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.brands')}</Link></li>
+          </ul>
+        </nav>
+
+        {/* User Actions */}
+        <div className="user-actions-container">
+          {user ? (
+            <>
+              <Link to="/profile" className="btn btn-outline-primary w-100" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.profile')}</Link>
+              <button onClick={handleLogout} className="btn btn-outline-secondary w-100">{t('nav.logout')}</button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-primary w-100" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.login')}</Link>
+              <Link to="/register" className="btn btn-secondary w-100" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.register')}</Link>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );

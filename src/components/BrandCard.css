@@ -64,3 +64,27 @@ body.dark .brand-card-slug {
   color: #adb5bd;
 }
 
+
+
+/* Responsive adjustments for BrandCard.css */
+@media (max-width: 768px) {
+  .brand-card-image {
+    height: 120px;
+  }
+
+  .brand-card-name {
+    font-size: 0.9rem;
+  }
+
+  .brand-card-slug {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-card-image {
+    height: 100px;
+  }
+}
+
+

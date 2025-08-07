@@ -62,3 +62,43 @@ color: rgb(185, 4, 4);
     padding: 0.5rem;
   }
 }
+
+/* Additional Responsive adjustments for ProductDetail.css */
+@media (max-width: 480px) {
+  .product-image {
+    height: 200px;
+  }
+
+  .product-title {
+    font-size: 1.2rem;
+  }
+
+  .current-price {
+    font-size: 1.5rem;
+  }
+
+  .original-price {
+    font-size: 1rem;
+  }
+
+  .custom-carousel-control {
+    width: 30px;
+    height: 30px;
+  }
+
+  .custom-carousel-icon {
+    width: 12px;
+    height: 12px;
+    background-size: 12px 12px;
+  }
+
+  .specifications-list {
+    flex-direction: column;
+  }
+
+  .spec-item {
+    width: 100%;
+  }
+}
+
+

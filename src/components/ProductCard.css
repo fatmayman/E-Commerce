@@ -198,3 +198,60 @@ body.dark .star-empty {
 .addtocart {
   font-size: 16px;
 }
+
+/* Additional Responsive adjustments for ProductCard.css */
+@media (min-width: 577px) and (max-width: 992px) {
+  .product-card {
+    max-width: 220px;
+    height: 320px;
+  }
+
+  .product-card-image {
+    height: 160px;
+  }
+
+  .product-card-title {
+    font-size: 0.85rem;
+  }
+
+  .product-card-price {
+    font-size: 1rem;
+  }
+
+  .product-card-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    height: auto;
+  }
+
+  .product-card-image {
+    height: 150px;
+  }
+
+  .product-card-title {
+    font-size: 0.9rem;
+  }
+
+  .product-card-price {
+    font-size: 1.1rem;
+  }
+
+  .product-card-actions {
+    flex-direction: row; /* Keep buttons in a row on very small screens if space allows */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .product-card-btn {
+    flex: none;
+    width: 48%; /* Allow two buttons per row */
+    margin-bottom: 0.5rem;
+  }
+}
+
+

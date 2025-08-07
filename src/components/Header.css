@@ -8,7 +8,7 @@
   background-color: #cbe0e4;
   transition: background-image 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   padding: 0;
-  height: 90px; 
+  height: 90px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,18 +41,20 @@ body.dark .header.scrolled {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex: 1;
 }
 
 .header-section.left {
+  flex: 1;
   justify-content: flex-start;
 }
 
 .header-section.center-logo {
+  flex: 1;
   justify-content: center;
 }
 
 .header-section.right {
+  flex: 1;
   justify-content: flex-end;
 }
 
@@ -68,7 +70,6 @@ body.dark .header.scrolled {
   transition: transform 0.3s ease-in-out;
 }
 
-/*  تم الإبقاء على هذا الكود فقط لتصغير اللوجو عند الـ scroll */
 .header.scrolled .logo-container {
   transform: scale(0.9);
 }
@@ -142,14 +143,12 @@ body.dark .btn.btn-link:hover {
   color: inherit;
 }
 
-/* كود محسّن للتحكم في رابط عربة التسوق والمسافة */
 .cart-link,
 .cart-link:hover {
   display: inline-flex;
   align-items: center;
   text-decoration: none !important;
   gap: 6px;
-  /* التحكم في المسافة بين الأيقونة والرقم */
 }
 
 .navbar {
@@ -199,4 +198,195 @@ body.dark .search-input {
 
 body.dark .search-input::placeholder {
   color: #888;
+}
+
+/* --- Mobile Navigation --- */
+.mobile-menu-toggle {
+  display: none;
+  /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.8rem;
+  z-index: 1040;
+}
+
+body.dark .mobile-menu-toggle {
+  color: #eee;
+}
+
+.mobile-nav-container {
+  display: none;
+  /* Hidden on desktop */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .header-top-bar {
+    padding: 10px 20px;
+  }
+
+  .header-section {
+    gap: 10px;
+  }
+
+  .logo-img {
+    height: 60px;
+  }
+
+  .navbar-nav {
+    gap: 20px;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .search-form.open {
+    width: 150px;
+  }
+}
+
+/* --- Mobile View (max-width: 768px) --- */
+@media (max-width: 768px) {
+  .header {
+    height: 70px;
+    /* Fixed height for mobile header */
+    flex-direction: row;
+    padding: 0 20px;
+  }
+
+  .header-top-bar {
+    padding: 0;
+    height: 100%;
+  }
+
+  /* Hide desktop navigation and user actions */
+  .header-bottom-nav,
+  .user-actions-container {
+    display: none;
+  }
+
+  /* Show mobile menu toggle button */
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  /* Adjust header sections for mobile layout */
+  .header-section.left {
+    justify-content: flex-start;
+  }
+
+  .header-section.center-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header-section.right {
+    justify-content: flex-end;
+  }
+
+  .logo-img {
+    height: 55px;
+  }
+
+  /* Styles for the mobile navigation container that slides down */
+  .mobile-nav-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: #cbe0e4;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-110%);
+    transition: transform 0.4s ease-in-out;
+    overflow-y: auto;
+    z-index: 1020;
+  }
+
+  body.dark .mobile-nav-container {
+    background-color: #121212;
+  }
+
+  /* When the menu is open, slide it into view */
+  .header.menu-open .mobile-nav-container {
+    transform: translateY(0);
+  }
+
+  /* Mobile navigation links */
+  .mobile-nav-container .navbar-nav {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .mobile-nav-container .nav-link {
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  body.dark .mobile-nav-container .nav-link {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Mobile user actions */
+  .mobile-nav-container .user-actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+  }
+
+  body.dark .mobile-nav-container .user-actions-container {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-nav-container .header-search-container {
+    width: 100%;
+  }
+
+  .mobile-nav-container .search-form {
+    width: 100%;
+    transition: none;
+  }
+
+  .mobile-nav-container .search-form.open {
+    width: 100%;
+    margin: 0;
+  }
+
+  .mobile-nav-container .search-input {
+    height: 40px;
+  }
+
+  .mobile-nav-container .btn.btn-link {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 15px;
+    height: 70px;
+  }
+
+  .logo-img {
+    height: 45px;
+  }
+
+  .mobile-nav-container {
+    top: 60px;
+    height: calc(100vh - 60px);
+  }
 }
