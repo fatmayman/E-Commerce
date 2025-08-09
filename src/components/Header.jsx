@@ -74,7 +74,7 @@ const Header = () => {
           <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-          <div className="desktop-icons" style={{ display: 'flex', gap: '20px' }}>
+          <div className="desktop-icons" style={{ display: 'flex', gap: '17px' }}>
             <button onClick={toggleTheme} className="theme-toggle-btn" title={theme === 'dark' ? t('common.lightMode') : t('common.darkMode')}>
               {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
             </button>

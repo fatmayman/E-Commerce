@@ -145,7 +145,7 @@ const ProductDetail = () => {
             <p className="lead mb-4">{product.description}</p>
 
             <div className="mb-4">
-              <h3 className="h4 text-primary">${product.price}</h3>
+              <h3 className="h4 text-primary">EGP {product.price}</h3>
             </div>
 
             <div className="d-grid gap-2">
