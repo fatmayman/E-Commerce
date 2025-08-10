@@ -14,9 +14,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ProductDetail from './pages/ProductDetail';
 import NotFound from './pages/NotFound';
-
 import './utils/i18n';
 import './App.css';
+
 const ThemedApp = () => {
   const { theme } = useContext(ThemeContext);
   const { i18n } = useTranslation();
@@ -43,9 +43,7 @@ const ThemedApp = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
         <Route path="/" element={<Layout><Home /></Layout>} />
-        <Route path="/brands" element={<Layout><Brands /></Layout>} />
         <Route path="/categories" element={<Layout><Categories /></Layout>} />
         <Route path="/cart" element={<Layout><Cart /></Layout>} />
         <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
@@ -64,7 +62,16 @@ const ThemedApp = () => {
           } 
         />
         
-        <Route path="*" element={<NotFound />} />
+<Route 
+  path="/brands" 
+  element={
+    <Layout>
+      <ProtectedRoute>
+        <Brands />
+      </ProtectedRoute>
+    </Layout>
+  } 
+/>
       </Routes>
     </div>
   );

@@ -11,7 +11,6 @@ const Footer = () => {
   const { theme } = useTheme();
   const [ratings, setRatings] = useState([]);
   const [newRating, setNewRating] = useState({ name: '', email: '', message: '' });
-
   const logoSrc = theme === 'dark' ? logoDark : logoLight;
 
   const handleRatingSubmit = (e) => {
