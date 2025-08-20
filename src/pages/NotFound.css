@@ -1,0 +1,172 @@
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#e2e2e2;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 2rem;
+}
+
+.not-found-content {
+  max-width: 600px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  } 
+}
+
+.not-found-number {
+  font-size: 8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.not-found-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.not-found-description {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.not-found-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.not-found-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.not-found-btn-primary {
+  background-color: white;
+  color: #002fff;
+}
+
+.not-found-btn-primary:hover {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.not-found-btn-secondary {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+}
+
+.not-found-btn-secondary:hover {
+  background-color: white;
+  color: #002fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.not-found-icon {
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.not-found-icon img {
+  width: 250px;
+  height: auto;
+  animation: bounce 2s infinite;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .not-found-number {
+    font-size: 6rem;
+  }
+  
+  .not-found-title {
+    font-size: 2rem;
+  }
+  
+  .not-found-description {
+    font-size: 1rem;
+  }
+  
+  .not-found-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .not-found-btn {
+    width: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .not-found-number {
+    font-size: 5rem;
+  }
+
+  .not-found-title {
+    font-size: 1.8rem;
+  }
+
+  .not-found-description {
+    font-size: 0.9rem;
+  }
+
+  .not-found-btn {
+    width: 180px;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .not-found-icon img {
+    width: 200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .not-found-number {
+    font-size: 4rem;
+  }
+
+  .not-found-title {
+    font-size: 1.5rem;
+  }
+
+  .not-found-btn {
+    width: 100%;
+  }
+}
+
+

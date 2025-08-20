@@ -1,0 +1,118 @@
+.brands-container {
+  padding: 3rem 0;
+}
+
+.brands-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.brands-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.brands-header p {
+  font-size: 1.25rem;
+  color: #6c757d;
+}
+
+body.dark .brands-header p {
+  color: #adb5bd;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.no-brands-message {
+  text-align: center;
+  padding: 3rem 0;
+  color: #6c757d;
+}
+
+body.dark .no-brands-message {
+  color: #adb5bd;
+}
+
+.loading-container, .error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.loading-spinner, .error-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem auto;
+  color: #007bff;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.error-text {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+body.dark .error-text {
+  color: #adb5bd;
+}
+
+.try-again-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.try-again-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .brands-header h1 {
+    font-size: 2rem;
+  }
+
+  .brands-header p {
+    font-size: 1rem;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brands-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+

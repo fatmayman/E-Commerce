@@ -1,0 +1,153 @@
+body {
+  font-family:'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+  padding: 1rem 2rem;
+}
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .header.scrolled {
+  background-color: rgba(18, 18, 18, 0.8);
+}
+
+.logo {
+  transition: transform 0.3s ease-in-out;
+}
+
+.header.scrolled .logo {
+  transform: scale(0.9);
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  width: 250px;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .product-card {
+  border-color: #333;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: auto;
+  color: white;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.footer {
+  padding: 2rem 0;
+  border-top: 1px solid #ddd;
+}
+
+body.dark .footer {
+  border-top-color: #333;
+}
+
+.rating-display {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+body.dark .rating-display {
+  border-color: #333;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+
+  .auth-form {
+    padding: 1.5rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem;
+  }
+
+  .auth-form {
+    padding: 1rem;
+  }
+}
+
+
+ [dir="rtl"] .log-btn {
+  border-radius: 50% !important;
+  width: 41px;
+} 
+
+[dir="rtl"] .btn {
+ margin-right: 4px;
+}
+
+[dir="rtl"] .pass-btn {
+  border-radius: 50% !important;
+  width: 35px;
+
+}
+
+ [dir="rtl"] .input-group .form-control {
+  border-radius:0.375rem 0.375rem 0.375rem 0.375rem !important; 
+}
+
+
+
+

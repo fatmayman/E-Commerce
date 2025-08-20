@@ -1,0 +1,43 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules and lock files
+node_modules/
+pnpm-lock.yaml
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# Build outputs
+dist/
+build/
+dist-ssr/
+
+# Editor & IDE settings
+.vscode/
+.idea/
+
+# Caches and temp
+.cache/
+.temp/
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Visual Studio project files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# VSCode workspace config exception 
+!.vscode/extensions.json

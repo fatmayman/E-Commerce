@@ -1,0 +1,136 @@
+{
+  "nav": {
+    "home": "Home",
+    "brands": "Brands",
+    "categories": "Categories",
+    "search": "Search",
+    "cart": "Cart",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "profile": "Profile"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "fullName": "Full Name",
+    "name": "Name",
+    "phone": "Phone",
+    "enterEmail": "Enter your email",
+    "enterPassword": "Enter your password",
+    "enterFullName": "Enter your full name",
+    "loginButton": "Sign In",
+    "registerButton": "Sign Up",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "createAccount": "Create Account",
+    "welcomeBack": "Welcome back! Please sign in to your account.",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "rememberMe": "Remember me",
+    "agreeToTerms": "I agree to the Terms and Conditions",
+    "loginFailed": "Login failed. Please try again.",
+    "registrationFailed": "Registration failed. Please try again."
+  },
+  "validation": {
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "nameRequired": "Name is required",
+    "nameMinLength": "Name must be at least 2 characters",
+    "confirmPasswordRequired": "Please confirm your password",
+    "passwordsDoNotMatch": "Passwords do not match"
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Discover our amazing collection",
+    "addToCart": "Add to Cart",
+    "price": "Price",
+    "category": "Category",
+    "brand": "Brand",
+    "rating": "Rating",
+    "description": "Description",
+    "noProducts": "No products found"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "reviews": "reviews",
+    "brand": "Brand",
+    "category": "Category",
+    "subcategory": "Subcategory",
+    "quantity": "Quantity",
+    "sold": "Sold",
+    "specifications": "Specifications",
+    "notFound": "Product not found"
+  },
+  "brands": {
+    "title": "Brands",
+    "allBrands": "All Brands",
+    "noBrands": "No brands found"
+  },
+  "categories": {
+    "subtitle": "Browse by category",
+    "explore": "Explore"
+  },
+  "search": {
+    "results": "Search results for",
+    "productsFound": "products found"
+  },
+  "hero": {
+    "welcome": "Welcome to Illurea",
+    "subtitle": "Discover amazing products from top brands",
+    "shopNow": "Shop Now"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "checkout": "Checkout",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "continueShopping": "Continue Shopping"
+  },
+  "footer": {
+    "contactUs": "Contact Us",
+    "rateUs": "Rate Our Website",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "copyright": "© 2025 Illurea. All rights reserved.",
+    "rateWebsite": "Rate Our Website",
+    "rightsReserved": "All rights reserved.",
+    "ratings": "Customer Reviews"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "tryAgain": "Try Again",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "language": "Language",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode"
+  },
+  "errors": {
+    "404": "Page Not Found",
+    "404Description": " The page you're looking for can’t be found. It might have been removed, had its name changed, or is temporarily unavailable. Please check the URL for mistakes and try again. Or return to the homepage to continue browsing.",
+    "goHome": "Go Home",
+    "networkError": "Network Error",
+    "serverError": "Server Error"
+  }
+}
+

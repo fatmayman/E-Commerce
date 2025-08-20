@@ -1,0 +1,46 @@
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  flex: 1;
+  padding-top: 88px;
+}
+
+.layout-content {
+  min-height: calc(100vh - 200px);
+}
+
+[dir="rtl"] .layout-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .layout-main {
+  text-align: right;
+}
+
+@media (max-width: 992px) {
+  .layout-main {
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-main {
+    padding-top: 88px;
+  }
+}
+
+@media (max-width: 576px) {
+  .layout-main {
+    padding-top: 70px;
+  }
+
+  .layout-content {
+    min-height: calc(100vh - 150px);
+  }
+}
+
+
